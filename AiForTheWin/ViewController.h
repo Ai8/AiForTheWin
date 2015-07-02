@@ -49,18 +49,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 //Array of words
-@property(strong,nonatomic) NSMutableArray *arrayOfSports;
-@property (strong, nonatomic) NSMutableArray *negative;
-@property (strong, nonatomic) NSMutableArray *positive;
+@property(strong,nonatomic) NSMutableArray *arrayOfAnimals;
 @property (strong, nonatomic) NSMutableArray *nouns;
 @property (strong, nonatomic) NSMutableArray *positveVerbs;
 @property (strong, nonatomic) NSMutableArray *negativeVerbs;
-@property (strong, nonatomic) NSMutableArray *subjects;
-@property (strong, nonatomic) NSMutableArray *familyThoughts;
-@property (strong, nonatomic) NSMutableArray *workThoughts;
-@property (strong, nonatomic) NSMutableArray *personalThoughts;
-@property (strong, nonatomic) NSMutableArray *UserQUESTIONS;
-@property (strong, nonatomic)NSMutableArray *PersonName;
+
 
 
 //Speech synthesizer
