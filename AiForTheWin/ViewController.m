@@ -15,6 +15,8 @@
     NSArray *speechVoices;
     NSString *stringAnimal;
     NSMutableArray *animals;
+    NSMutableArray *personFeelings;
+    NSString *pfString;
 }
 @end
 
@@ -58,7 +60,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [personVoice resignFirstResponder];
     
-    [self setUpArrays];
+    //[self setUpArrays];
     [self robotStartThinking];
 }
 
@@ -104,6 +106,15 @@
         [robotSpeak invalidate];
         
     }
+    
+    
+    for (int i = 0; i < [personFeelings count]; i++) {
+        pfString = [personFeelings objectAtIndex:i];
+    }
+        if ([personVoice.text isEqualToString:pfString]) {
+            machineVoice.text = [NSString stringWithFormat:@"why are you feeling %@", pfString];
+            [self speakNow];
+        }
     
 }
 
@@ -160,7 +171,7 @@
     
     responsesForTextContainingWordLove = [[NSMutableArray alloc]initWithObjects:@"love is a very strong word",@"do you even know the meaning of the word love?",@"I'm glad you feel that way",nil];
     
-    NSMutableArray *personFeelings = [[NSMutableArray alloc]initWithObjects:@"great",@"not so good",@"fine!",@"fantastic!",@"horrible",@"good",@"terrific",@"bad", nil];
+    personFeelings = [[NSMutableArray alloc]initWithObjects:@"great",@"not so good",@"fine!",@"fantastic!",@"horrible",@"good",@"terrific",@"bad", nil];
     
     allwords = [NSMutableArray array];
     [allwords addObjectsFromArray:top25numbers];
