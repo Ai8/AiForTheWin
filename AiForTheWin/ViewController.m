@@ -22,6 +22,7 @@
 
 @synthesize machineVoice, positveVerbs, negativeVerbs, arrayOfAnimals, synthesizer, nouns, personVoice;
 
+#pragma View Controller Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,8 +42,8 @@
 -(void)viewDidAppear:(BOOL)animated {
 }
 
-#pragma mark UITextFieldDelegates
 
+#pragma mark UITextFieldDelegates + Control UITextField
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     return nil;
 }
@@ -54,8 +55,14 @@
     return nil;
 }
 
-#pragma mark Robot methods
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [personVoice resignFirstResponder];
+    
+    [self setUpArrays];
+    [self robotStartThinking];
+}
 
+#pragma mark Robot methods
 -(void)speakNow {
     utterance = [[AVSpeechUtterance alloc] initWithString: machineVoice.text];
     
@@ -67,6 +74,7 @@
     [synthesizer speakUtterance:utterance];
     [self performSelector:@selector(speakStop) withObject:nil afterDelay:1.5];
 }
+
 
 -(void)speakStop {
     utterance.volume = 0.0;
@@ -99,8 +107,8 @@
     
 }
 
-#pragma mark Brain Arrays
 
+#pragma mark Brain Arrays
 -(void)animals {
 
     NSMutableArray *animalResponses = [[NSMutableArray alloc]initWithObjects:@"%@ are cool",@"I really like %@ ",@"%@ are the best animals",@"%@ are one of the coolest animals ever", nil];
@@ -152,8 +160,8 @@
     
     responsesForTextContainingWordLove = [[NSMutableArray alloc]initWithObjects:@"love is a very strong word",@"do you even know the meaning of the word love?",@"I'm glad you feel that way",nil];
     
+    NSMutableArray *personFeelings = [[NSMutableArray alloc]initWithObjects:@"great",@"not so good",@"fine!",@"fantastic!",@"horrible",@"good",@"terrific",@"bad", nil];
     
-    //Add all arrays into one large array
     allwords = [NSMutableArray array];
     [allwords addObjectsFromArray:top25numbers];
     [allwords addObjectsFromArray:top25Nouns];
